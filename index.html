@@ -1,0 +1,63 @@
+<?php
+
+require_once 'assets/php/db.php';
+session_start();
+if (isset($_POST['submit'])){
+    $content = mysqli_escape_string($connect , $_POST['content']);
+    $msgs = array();
+    $sql = "SELECT * FROM chat";
+    $result = mysqli_query($connect, $sql);
+    if (mysqli_num_rows($result) == 0){
+        $msgs[] = 'Não entendi, você quer me ensinar?';
+    }
+    if (!empty($msgs)){
+        foreach($msgs as $msg){
+            if ($msg == 'Não entendi, você quer me ensinar?' || $connect == 'sim'){
+                header('location:aprender.php?chamada='.$content);
+            }
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatNIA 1.0</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <main>
+        <div class="buguer">
+            <i class='bx bx-menu'></i>
+        </div>
+        <div class="side">
+            <div class="top">
+                <h1>ChatNIA 1.0</h1>
+                <p>com o objetivo de imitar conversas humanas. ChatNIA pode ser usado para uma ampla gama de aplicações, incluindo chatbots, assistentes virtuais, geração de texto e muito mais.</p>
+            </div>
+            <div class="discord">   
+                <a href="https://ericknovaes56.netlify.app/" target="_blank">
+                    <input type="button" value="CREDITOS">
+                </a>
+            </div>
+        </div>
+        <div class="chat">
+            <div class="area_msg" id="area">
+                <span class="msg bot active">Como posso ajudar?</span>
+            </div>
+            <form method="post" id="form" name="form">
+                <div class="inp">
+                    <input type="text" name="content" placeholder="iniciar" id="inp" autocomplete="off">
+                    <input type="submit" name="submit" value="Enviar" id="submit">
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
