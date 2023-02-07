@@ -106,6 +106,7 @@ document.getElementById("inp").addEventListener("keypress" , (event)=>{
     var tecla = event.keyCode
     if (tecla == '13'){
         var value = document.getElementById("inp").value
+        value = value.toLowerCase()
         response(value)
     }
 })
