@@ -112,6 +112,7 @@ document.getElementById("inp").addEventListener("keypress" , (event)=>{
 })
 document.getElementById("submit").addEventListener("click" , ()=>{
     var value = document.getElementById("inp").value
+    value = value.toLowerCase()
     response(value)
 })
 
