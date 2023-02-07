@@ -85,7 +85,7 @@ function response(value){
             var video = window.prompt('Link')
             if (video != ""){
                 var video= video.replace("watch?v=","embed/")
-                createSpan("bot",'<iframe width="560" height="315" src="'+video+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>')
+                createSpan("bot",'<iframe width="100%" height="100%" src="'+video+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>')
             }else{
                 createSpan("bot",'Ok !')
             }
@@ -126,7 +126,7 @@ function response(value){
                     type: "text/plain;charset=utf-8"
                 })
                 var link = window.URL.createObjectURL(blob);
-                createSpan("bot",'<span>Seu Aqruivo:</span><a href='+link+' class="download" download="Baixado" target="_blank">Baixar</a>')
+                createSpan("bot",'<span>Seu Arquivo:</span><a href='+link+' class="download" download="Baixado" target="_blank">Baixar</a>')
    
             }else{
                 createSpan("bot",'Cancelado !')

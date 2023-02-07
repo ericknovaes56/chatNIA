@@ -108,6 +108,10 @@ main{
     flex-direction: column;
     gap: 20px;
 }
+.chat > .area_msg > .bot iframe{
+    width: 100%;
+    border-radius: 20px;
+}
 .chat .inp{
     display: flex;
     padding: 20px;
