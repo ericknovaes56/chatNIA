@@ -110,6 +110,7 @@ main{
 }
 .chat > .area_msg > .bot iframe{
     width: 100%;
+    min-height: 300px;
     border-radius: 20px;
 }
 .chat .inp{
