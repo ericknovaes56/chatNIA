@@ -94,12 +94,45 @@ function response(value){
             var video = window.prompt('Link')
             if (video != ""){
                 var video= video.replace("youtube","ssyoutube")
-                createSpan("bot",'<a href='+video+'>'+video+'</a>')
+                createSpan("bot",'<a href='+video+' target="_blank">'+video+'</a>')
    
             }else{
                 createSpan("bot",'Ok !')
             }
         }
+        if (value.includes('youtube') && value.includes('https://www.') && value.includes('watch?v=')){
+            var video = window.prompt('Link')
+            if (video != ""){
+                var video= video.replace("watch?v=","embed/")
+                createSpan("bot",'<iframe width="560" height="315" src="'+video+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>')
+            }else{
+                createSpan("bot",'Ok !')
+            }
+        }
+        if (value == 'cls'){
+            var msgs = document.querySelectorAll(".msg")
+            msgs.forEach(element => {
+                element.remove()
+            });
+        }
+        if (value.includes('hora')){
+            var testeData = Date();
+            createSpan("bot", testeData)
+        }
+        if (value == '!text'){
+            var texts = window.prompt('Link')
+            if (texts != ""){
+                let blob = new Blob([texts],{
+                    type: "text/plain;charset=utf-8"
+                })
+                var link = window.URL.createObjectURL(blob);
+                createSpan("bot",'<span>Seu Aqruivo:</span><a href='+link+' class="download" download="Baixado" target="_blank">Baixar</a>')
+   
+            }else{
+                createSpan("bot",'Cancelado !')
+            }
+        }
+
     }
 }
 document.getElementById("inp").addEventListener("keypress" , (event)=>{
