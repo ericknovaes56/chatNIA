@@ -4,6 +4,9 @@
 }
 body{
     background-color: #131313;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 main{
     display: flex;
@@ -13,7 +16,7 @@ main{
     height: 100vh;
     width: 300px;
     display: flex;
-    background-color: #1f1f25;
+    background-color: #1f1f25b7;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
@@ -116,7 +119,6 @@ main{
 .chat .inp{
     display: flex;
     padding: 20px;
-    background-color: #131313;
     gap: 20px;
 }
 .chat .inp > input{
@@ -179,4 +181,60 @@ main{
     .chat .inp > input:last-child{
         max-width: 100%;
     }
+}
+.float{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 33;
+    width: 550px;
+    height: 350px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    flex-direction: column;
+    gap: 20px;
+    display: none;
+}
+#check{
+    display: none;
+}
+#check:checked ~ .float{
+    display: flex;
+}
+.float .hubcolor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+.float .hubimg{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.float .hubimg input{
+    padding: 10px 30px;
+    box-sizing: border-box;
+    border: 1px solid #131313;
+}
+#close{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
 }

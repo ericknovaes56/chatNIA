@@ -84,11 +84,21 @@ function response(value){
         if (value.includes('!v youtube') ){
             var video = window.prompt('Link')
             if (video != ""){
-                var video= video.replace("watch?v=","embed/")
-                createSpan("bot",'<iframe width="100%" height="100%" src="'+video+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>')
+                if (video.includes('youtube') && video.includes('https://www.') && video.includes('watch?v=')){
+                    var video= video.replace("watch?v=","embed/")
+                    createSpan("bot",'<iframe width="100%" height="100%" src="'+video+'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>')
+            }else{
+                createSpan("bot",'Opaaa ! isso não é um link !')
+            }
             }else{
                 createSpan("bot",'Ok !')
             }
+        }
+        if (value == 'youtube'){
+            createSpan("bot",'<a target="_blank" href="https://www.youtube.com/">https://www.youtube.com/</a>')
+        }
+        if (value.includes('abra')){
+            createSpan("bot",'Não posso abrir nenhum aplicativo !')
         }
         if (value.includes('!b youtube') ){
             var video = window.prompt('Link')
@@ -132,6 +142,10 @@ function response(value){
                 createSpan("bot",'Cancelado !')
             }
         }
+        if (value == '!backg'){
+            document.getElementById("check").click()
+            createSpan("bot",'Isso irá ser salvo na maquina !')
+        }
 
     }
 }
@@ -162,4 +176,22 @@ b.addEventListener("click" , ()=>{
         b.style.right='0'
     }
 
+})
+if (localStorage.getItem("img") || localStorage.getItem("cor")){
+    var n = localStorage.getItem("cor")
+    document.querySelector("body").style.backgroundColor=n
+    var img = localStorage.getItem("img")
+    document.querySelector("body").style.backgroundImage="url("+ img +")"
+}
+var color = document.getElementById("color")
+color.addEventListener("input" , ()=>{
+    var n = color.value
+    document.querySelector("body").style.backgroundColor=n
+    localStorage.setItem("cor", n)
+})
+var file = document.getElementById("file")
+file.addEventListener('change', (event)=>{
+    var img = URL.createObjectURL(event.target.files[0]);
+    document.querySelector("body").style.backgroundImage="url("+ img +")"
+    localStorage.setItem("img", img)
 })

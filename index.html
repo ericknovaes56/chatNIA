@@ -1,25 +1,3 @@
-<?php
-
-require_once 'assets/php/db.php';
-session_start();
-if (isset($_POST['submit'])){
-    $content = mysqli_escape_string($connect , $_POST['content']);
-    $msgs = array();
-    $sql = "SELECT * FROM chat";
-    $result = mysqli_query($connect, $sql);
-    if (mysqli_num_rows($result) == 0){
-        $msgs[] = 'Não entendi, você quer me ensinar?';
-    }
-    if (!empty($msgs)){
-        foreach($msgs as $msg){
-            if ($msg == 'Não entendi, você quer me ensinar?' || $connect == 'sim'){
-                header('location:aprender.php?chamada='.$content);
-            }
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -56,6 +34,22 @@ if (isset($_POST['submit'])){
                     <input type="submit" name="submit" value="Enviar" id="submit">
                 </div>
             </form>
+        </div>
+        <input type="checkbox" id="check">
+        <div class="float">
+            <label for="check" id="close">Fechar</label>
+            <div class="hubcolor">
+                <span>
+                    Mude a Cor de fundo !
+                </span>
+                <input type="color" id="color">
+            </div>
+            <div class="hubimg">
+                <span>
+                    Colorque uma imagem !
+                </span>
+                <input type="file" id="file">
+            </div>
         </div>
     </main>
     <script src="assets/js/script.js"></script>
